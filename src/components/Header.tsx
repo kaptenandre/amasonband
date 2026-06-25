@@ -4,7 +4,7 @@ export function Header({ settings }: { settings: SiteSettings | null }) {
   const name = settings?.title ?? "Amason";
   return (
     <header className="site-header">
-      <div className="container site-header__inner">
+      <div className="site-header__inner">
         <a className="brand" href="#top" aria-label={`${name} — home`}>
           {name}
         </a>

@@ -80,6 +80,8 @@ export interface Hero {
   heading: string;
   subheading?: string;
   backgroundImage?: SanityImage;
+  /** Optional full-bleed background video (mp4/webm URL). Takes priority over the image. */
+  backgroundVideoUrl?: string;
   ctas?: Cta[];
 }
 

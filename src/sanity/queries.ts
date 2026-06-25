@@ -33,6 +33,7 @@ const landingPageQuery = groq`
     heading,
     subheading,
     backgroundImage{ ${imageFields} },
+    "backgroundVideoUrl": backgroundVideoUrl,
     ctas[]{ ${ctaFields} }
   },
   sections[]{

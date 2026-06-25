@@ -9,7 +9,7 @@ export function Footer({ settings }: { settings: SiteSettings | null }) {
 
   return (
     <footer className="site-footer">
-      <div className="container">
+      <div>
         <div className="footer-grid">
           <div className="footer__brand">
             <div className="wordmark-sm">{name}</div>

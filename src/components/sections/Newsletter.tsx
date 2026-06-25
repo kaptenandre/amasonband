@@ -34,50 +34,42 @@ export function Newsletter({ data }: { data: NewsletterSection }) {
   }
 
   return (
-    <section className="section" id="newsletter">
-      <div className="container">
-        <div className="newsletter">
-          {data.heading && (
-            <h2 className="newsletter__heading">{data.heading}</h2>
-          )}
-          {data.body && <p className="newsletter__body">{data.body}</p>}
+    <section className="section-bleed newsletter" id="newsletter">
+      {data.heading && <h2 className="newsletter__heading">{data.heading}</h2>}
+      {data.body && <p className="newsletter__body">{data.body}</p>}
 
-          <form className="signup" onSubmit={handleSubmit}>
-            <label className="visually-hidden" htmlFor="newsletter-email">
-              Email address
-            </label>
-            <input
-              id="newsletter-email"
-              className="signup__input"
-              type="email"
-              required
-              autoComplete="email"
-              placeholder={data.placeholder || "you@email.com"}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <button
-              className="btn btn-primary"
-              type="submit"
-              disabled={state === "loading"}
-            >
-              {state === "loading"
-                ? "Signing up…"
-                : data.buttonLabel || "Notify me"}
-              {state !== "loading" && <Arrow />}
-            </button>
-          </form>
+      <form className="signup" onSubmit={handleSubmit}>
+        <label className="visually-hidden" htmlFor="newsletter-email">
+          Email address
+        </label>
+        <input
+          id="newsletter-email"
+          className="signup__input"
+          type="email"
+          required
+          autoComplete="email"
+          placeholder={data.placeholder || "you@email.com"}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <button
+          className="btn btn-primary"
+          type="submit"
+          disabled={state === "loading"}
+        >
+          {state === "loading" ? "Signing up…" : data.buttonLabel || "Notify me"}
+          {state !== "loading" && <Arrow />}
+        </button>
+      </form>
 
-          <p
-            className="signup__status"
-            data-state={state}
-            role="status"
-            aria-live="polite"
-          >
-            {message}
-          </p>
-        </div>
-      </div>
+      <p
+        className="signup__status"
+        data-state={state}
+        role="status"
+        aria-live="polite"
+      >
+        {message}
+      </p>
     </section>
   );
 }

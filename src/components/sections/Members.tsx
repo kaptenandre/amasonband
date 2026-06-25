@@ -27,7 +27,7 @@ export function Members({
         {data.heading && <h2 className="section-heading">{data.heading}</h2>}
         {data.intro && <p className="section-intro">{data.intro}</p>}
 
-        <div className="members-grid">
+        <div className="members-grid full-bleed">
           {members.map((m) => {
             const photo = m.photo
               ? urlForImage(m.photo).width(280).height(280).quality(82).url()
