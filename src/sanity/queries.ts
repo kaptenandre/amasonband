@@ -60,6 +60,14 @@ const landingPageQuery = groq`
       heading, intro, spotifyEmbedUrl,
       links[]{ ${streamingFields} }
     },
+    _type == "shopSection" => {
+      heading, intro, shopUrl, ctaLabel,
+      products[]{ _key, title, price, url, soldOut, image{ ${imageFields} } }
+    },
+    _type == "linksSection" => {
+      heading, intro,
+      links[]{ _key, label, url, description }
+    },
     _type == "newsletterSection" => {
       heading, body, placeholder, buttonLabel, actionUrl, successMessage
     },

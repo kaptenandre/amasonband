@@ -146,12 +146,46 @@ export interface PressSection extends BaseSection {
   quotes?: Quote[];
 }
 
+export interface Product {
+  _key: string;
+  title: string;
+  image?: SanityImage;
+  price?: string;
+  url?: string;
+  soldOut?: boolean;
+}
+
+export interface ShopSection extends BaseSection {
+  _type: "shopSection";
+  heading?: string;
+  intro?: string;
+  products?: Product[];
+  shopUrl?: string;
+  ctaLabel?: string;
+}
+
+export interface LinkItem {
+  _key: string;
+  label: string;
+  url: string;
+  description?: string;
+}
+
+export interface LinksSection extends BaseSection {
+  _type: "linksSection";
+  heading?: string;
+  intro?: string;
+  links?: LinkItem[];
+}
+
 export type Section =
   | AboutSection
   | ReleaseSection
   | MembersSection
   | DiscographySection
   | ListenSection
+  | ShopSection
+  | LinksSection
   | NewsletterSection
   | PressSection;
 

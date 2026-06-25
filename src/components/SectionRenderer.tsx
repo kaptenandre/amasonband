@@ -3,6 +3,8 @@ import { FeaturedRelease } from "./sections/FeaturedRelease";
 import { Members } from "./sections/Members";
 import { Discography } from "./sections/Discography";
 import { Listen } from "./sections/Listen";
+import { Shop } from "./sections/Shop";
+import { Links } from "./sections/Links";
 import { Newsletter } from "./sections/Newsletter";
 import { Press } from "./sections/Press";
 import type { Member, Release, Section } from "@/sanity/types";
@@ -27,6 +29,10 @@ export function SectionRenderer({
       return <Discography data={section} releases={releases} />;
     case "listenSection":
       return <Listen data={section} />;
+    case "shopSection":
+      return <Shop data={section} />;
+    case "linksSection":
+      return <Links data={section} />;
     case "newsletterSection":
       return <Newsletter data={section} />;
     case "pressSection":

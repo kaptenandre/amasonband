@@ -30,7 +30,18 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title,
     description,
-    keywords: seo?.keywords,
+    keywords:
+      seo?.keywords && seo.keywords.length > 0
+        ? seo.keywords
+        : [
+            "Amason",
+            "Amason band",
+            "Swedish indie pop",
+            "indie pop supergroup",
+            "Amason new album",
+            "Amason 2027",
+            "Stockholm indie",
+          ],
     alternates: { canonical: "/" },
     robots: seo?.noIndex
       ? { index: false, follow: false }

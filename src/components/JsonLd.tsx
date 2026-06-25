@@ -15,10 +15,11 @@ export function JsonLd({
   releases: Release[];
 }) {
   const name = settings?.title ?? "Amason";
+  const bandId = `${siteUrl}/#band`;
 
-  const data = {
-    "@context": "https://schema.org",
+  const band = {
     "@type": "MusicGroup",
+    "@id": bandId,
     name,
     description: settings?.description,
     url: siteUrl,
@@ -32,14 +33,29 @@ export function JsonLd({
       name: m.name,
       ...(m.role ? { roleName: m.role } : {}),
     })),
-    album: releases
-      .filter((r) => !r.upcoming)
-      .map((r) => ({
-        "@type": "MusicAlbum",
-        name: r.title,
-        ...(r.releaseDate ? { datePublished: r.releaseDate } : {}),
-      })),
+    album: releases.map((r) => ({
+      "@type": "MusicAlbum",
+      name: r.title,
+      byArtist: { "@id": bandId },
+      ...(r.releaseType ? { albumReleaseType: r.releaseType } : {}),
+      ...(r.releaseDate ? { datePublished: r.releaseDate } : {}),
+    })),
     sameAs: (settings?.socialLinks ?? []).map((s) => s.url),
+  };
+
+  const website = {
+    "@type": "WebSite",
+    "@id": `${siteUrl}/#website`,
+    url: siteUrl,
+    name,
+    description: settings?.description,
+    inLanguage: "en",
+    publisher: { "@id": bandId },
+  };
+
+  const data = {
+    "@context": "https://schema.org",
+    "@graph": [band, website],
   };
 
   return (
